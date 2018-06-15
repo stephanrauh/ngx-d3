@@ -6,6 +6,9 @@ export interface PieChartData {
   value: number;
   caption: string;
   color?: string;
+}
+
+export interface InternalPieChartData extends PieChartData {
   path?: string;
   textPosition?: [number, number];
 }
@@ -24,20 +27,17 @@ export class PieChartComponent implements OnInit, OnChanges {
 
   @Input() radius = Math.min(this.width, this.height) / 2;
 
-  public chartdata!: (PieArcDatum<PieChartData> & DefaultArcObject)[];
+  public chartdata!: (PieArcDatum<InternalPieChartData> & DefaultArcObject)[];
 
   public center: string;
-  constructor() {
-    this.center = `translate(${this.width / 2}, ${this.height / 2})`;
-  }
+
+  constructor() {}
 
   ngOnInit() {}
 
   ngOnChanges(changes: any): void {
-    this.version2();
-  }
+    this.center = `translate(${this.width / 2}, ${this.height / 2})`;
 
-  private version2(): void {
     const label = arc()
       .outerRadius(this.radius - 40)
       .innerRadius(this.radius - 40);
@@ -46,17 +46,11 @@ export class PieChartComponent implements OnInit, OnChanges {
       .sort(null)
       .value((d: PieChartData) => d.value);
 
-    const path = arc()
+    const svgPathGenerator = arc()
       .outerRadius(this.radius - 10)
       .innerRadius(0);
 
-    //const o: DefaultArcObject = null;
-    //o.endAngle;
-    //o.innerRadius;
-    //o.outerRadius;
-    //o.startAngle;
-
-    const x: PieArcDatum<PieChartData>[] = pieChartDataGenerator(this.data);
+    const x: PieArcDatum<InternalPieChartData>[] = pieChartDataGenerator(this.data);
 
     this.chartdata = x.map(element => {
       return {
@@ -67,12 +61,13 @@ export class PieChartComponent implements OnInit, OnChanges {
     });
 
     this.chartdata.forEach(d => {
-      d.data.path = path(d);
+      d.data.path = svgPathGenerator(d);
       d.data.textPosition = label.centroid(d);
       console.dir(d);
     });
   }
 
+  /*
   private version1(): void {
     const sum = this.data.reduce((p, c) => p + c.value, 0);
     let lastAngle = 0;
@@ -86,4 +81,5 @@ export class PieChartComponent implements OnInit, OnChanges {
       lastAngle = newAngle;
     });
   }
+  */
 }
