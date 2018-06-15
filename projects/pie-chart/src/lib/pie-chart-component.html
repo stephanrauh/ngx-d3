@@ -1,0 +1,6 @@
+<svg [attr.width]="width" [attr.height]="height">
+    <g [attr.transform]="center">
+        <path *ngFor="let d of chartdata" [attr.fill]="d.data.color" stroke="white" stroke-width="1px" [attr.d]="d.data.path"></path>
+        <text *ngFor="let d of chartdata" [attr.transform]="'translate(' + d.data.textPosition + ')'" dy="0.35em">{{d.data.caption}}</text>
+    </g>
+</svg>
