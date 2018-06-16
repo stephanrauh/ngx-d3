@@ -18,7 +18,7 @@ export interface InternalPieChartData extends PieChartData {
   templateUrl: './pie-chart-component.html',
   styleUrls: ['./pie-chart-component.css']
 })
-export class PieChartComponent implements OnInit, OnChanges {
+export class PieChartComponent implements OnChanges {
   @Input() data: Array<PieChartData> = [];
 
   @Input() width = 500;
@@ -32,8 +32,6 @@ export class PieChartComponent implements OnInit, OnChanges {
   public center: string;
 
   constructor() {}
-
-  ngOnInit() {}
 
   ngOnChanges(changes: any): void {
     this.center = `translate(${this.width / 2}, ${this.height / 2})`;
@@ -67,6 +65,10 @@ export class PieChartComponent implements OnInit, OnChanges {
     });
   }
 
+  /**
+   * This method is not part of the final component.
+   * Instead, it's merely the first approach as described in the article https://www.beyondjava.net/ngx-d3-pie-chart.
+   */
   /*
   private version1(): void {
     const sum = this.data.reduce((p, c) => p + c.value, 0);
