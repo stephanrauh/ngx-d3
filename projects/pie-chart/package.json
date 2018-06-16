@@ -1,6 +1,10 @@
 {
-  "name": "pie-chart",
+  "name": "ngx-d3-pie-chart",
   "version": "0.0.1",
+  "license": "Apache License V2",
+  "repository": {
+    "url": "https://github.com/stephanrauh/ngx-d3"
+  },
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0",

@@ -14,14 +14,12 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+Run `npm run package` to build the library (from the root directory of the project). The build artifacts will be stored in the `dist/ngx-d3-pie-chart` directory.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng build` to build the (test) project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running end-to-end tests
+Note to the author: to deploy the library on npm, change to the folder `dist/ngx-d3-pie-chart` and run `npm publish` from there.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## License
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+The library has been published under an Apache V2 license.

@@ -11,9 +11,9 @@ export class AppComponent {
   public color = scaleOrdinal(['#98abc5', '#8a89a6', '#7b6888', '#6b486b', '#a05d56', '#d0743c', '#ff8c00']);
 
   public fruits: Array<PieChartData> = [
-    { value: 10, caption: 'apples' },
-    { value: 20, caption: 'oranges' },
-    { value: 30, caption: 'bananas' }
+    { value: 10, caption: 'apples', color: 'green' },
+    { value: 20, caption: 'oranges', color: 'orange' },
+    { value: 30, caption: 'bananas', color: 'yellow' }
   ];
 
   public ages: Array<PieChartData> = [
@@ -30,9 +30,6 @@ export class AppComponent {
 
   constructor() {
     this.ages.forEach(d => {
-      d.color = this.color(d.caption);
-    });
-    this.fruits.forEach(d => {
       d.color = this.color(d.caption);
     });
   }
